@@ -44,7 +44,14 @@ export default function App(){
     else { setScore(s=>Math.max(0,s-6)); setStreak(0); setMessage({type:'error', text:`Presque — la réponse attendue : ${question.answer}`}) }
     setShowAnswer(true)
   }
-  const handleReveal = () => { setShowAnswer(true); setMessage({type:'info', text:`Indice : ${question.hint||'(pas d'indice)'}`}) }
+ const handleReveal = () => { 
+  setShowAnswer(true); 
+  setMessage({ 
+    type: 'info', 
+    text: `Indice : ${question.hint || "(pas d'indice)"}`
+  }); 
+}
+
   const resetProgress = () => { setIndex(0); setScore(0); setStreak(0); setDeck(shuffleArray(EXPRESSIONS)); setShowAnswer(false); setMessage({type:'info', text:'Progression remise à zéro.'}) }
   const addToFavorites = () => {
     const favs = JSON.parse(localStorage.getItem('expr_favs')||'[]')
